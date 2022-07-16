@@ -28,7 +28,7 @@ body{
     padding: 1.5rem 1rem;
     box-shadow: 0px 4px 2px 2px rgba(0, 0 , 0, 0.4);
 }
-#answer, .digit,.operator,.utility{
+#answer, .digit,.operator,.utility,.dot{
     border-radius: 24px;
     margin:5px 2.5px;
     box-shadow: 0px 2px 1px 2px rgba(0, 0 , 0, 0.23);
@@ -53,7 +53,7 @@ body{
 }
 
 .digit-row{
-    .digit,.operator,.utility{
+    .digit,.operator,.utility,.dot{
         padding: 1.25rem 0;
         text-align: center;
         background-color: var(--white-digit-color);
@@ -61,10 +61,10 @@ body{
         min-width: 90px;
         cursor: pointer;
     }
-    .digit:hover,.operator:hover,.utility:hover{
+    .digit:hover,.dot:hover,.operator:hover,.utility:hover{
         background-color:#f1f1f1;
     }
-    .digit:active,.operator:active,.utility:active{
+    .digit:active,.dot:active,.operator:active,.utility:active{
         transform: scale(.975);
         box-shadow: 0px 1.4px .7px 1.4px rgba(0, 0 , 0, 0.08);
         background-color:#e7e7e7;
