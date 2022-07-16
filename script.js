@@ -12,13 +12,12 @@ const equal = document.querySelector(".equal");
 const answerDisplay = document.querySelector(".calculated-answer");
 const del = document.querySelector(".delete");
 const clear = document.querySelector(".reset");
-
+const dot = document.querySelector(".dot");
 
 del.addEventListener("click", () =>{
     displayText.pop();
     displayType.textContent = displayText.join("");
 });
-
 equal.addEventListener("click", ()=>{
     operator();
     displayText = [];
@@ -29,12 +28,36 @@ clear.addEventListener("click", ()=>{
     displayType.textContent = "";
     answerDisplay.textContent ="";
 });
-
+dot.addEventListener("click", ()=>{
+    console.log(mode);
+    if(mode != ""){
+        let str = displayText.join("").split(mode);
+        firstNum = str[0];
+        secondNum = str[1];
+        console.log(firstNum);
+        console.log(secondNum);
+        if(firstNum.includes(".") && secondNum.includes(".")){
+            if(firstNum.includes(".")) return;
+            else if(secondNum.includes(".")) return;
+        }else{
+            displayText.push(dot.textContent);
+            displayType.textContent = displayText.join("");
+        }
+    }else{
+        let str = displayText.join("");
+        if(str.includes(".")){
+            return
+        }else{
+            displayText.push(dot.textContent);
+            displayType.textContent = displayText.join("");
+        }
+    }
+});
 digits.forEach(element => {
     element.addEventListener("click", ()=>{
-            displayText.push(element.textContent);
-            displayType.textContent = displayText.join("");
-        });
+        displayText.push(element.textContent);
+        displayType.textContent = displayText.join("");
+    });
 });
 
 operators.forEach(element => {
