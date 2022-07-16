@@ -21,6 +21,7 @@ del.addEventListener("click", () =>{
 equal.addEventListener("click", ()=>{
     operator();
     displayText = [];
+    mode="";
 });
 
 clear.addEventListener("click", ()=>{
@@ -37,11 +38,13 @@ dot.addEventListener("click", ()=>{
         console.log(firstNum);
         console.log(secondNum);
         if(firstNum.includes(".") && secondNum.includes(".")){
-            if(firstNum.includes(".")) return;
-            else if(secondNum.includes(".")) return;
+            return;
         }else{
-            displayText.push(dot.textContent);
-            displayType.textContent = displayText.join("");
+            if(secondNum.includes(".")) return;
+            else{
+                displayText.push(dot.textContent);
+                displayType.textContent = displayText.join("");
+            }
         }
     }else{
         let str = displayText.join("");
@@ -102,11 +105,13 @@ let operator = () =>{
         console.log(secondNum);
         if(secondNum == "") answerDisplay.textContent = firstNum;
         else{
-            if(mode == "x") firstNum = firstNum*secondNum;
-            else if(mode == "÷") firstNum = firstNum/secondNum;
-            else if(mode == "+") firstNum = parseInt(firstNum)+parseInt(secondNum);
-            else if(mode == "-") firstNum = firstNum-secondNum;
-            answerDisplay.textContent = firstNum;
+            if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
+            else if(mode == "÷") firstNum = Number(firstNum)/Number(secondNum);
+            else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
+            else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);
+            if(Number.isInteger(firstNum)) answerDisplay.textContent = firstNum;
+            else answerDisplay.textContent = firstNum.toFixed(2);
+            
         }
     }
 };
