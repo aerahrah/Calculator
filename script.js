@@ -13,6 +13,7 @@ const answerDisplay = document.querySelector(".calculated-answer");
 const del = document.querySelector(".delete");
 const clear = document.querySelector(".reset");
 const dot = document.querySelector(".dot");
+const sqrt = document.querySelector(".squareroot");
 
 del.addEventListener("click", () =>{
     displayText.pop();
