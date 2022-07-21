@@ -1,5 +1,8 @@
 :root{
-    --white-digit-color: #F9F7F7;
+    --calcu-main-color: #343a40;
+    --font-color: #212529;
+    --button-bg-color: #e9ecef;
+    --button-hover-darkwhite: #ced4da;
 }
 
 *{
@@ -9,42 +12,43 @@
 }
 
 body{
+    min-height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--button-bg-color);
+    color: var(--font-color);
     font-size: 24px;
-    background-color: #e9ecef;
     font-family: 'Trispace', sans-serif;
-    text-transform: uppercase;
-    min-height: 100vh;
-    position: relative;
-    color: #343a40;
+    text-transform: uppercase;  
+    text-align: center;
 }
 
 .container-calcu{
     max-height: 600px;
     border-radius: 32px;
-    background-color: #91a7ff;
-    padding: 1.5rem 1rem;
     box-shadow: 0px 4px 2px 2px rgba(0, 0 , 0, 0.4);
+    background-color: var(--calcu-main-color);
+    padding: 1.5rem 1rem;
     margin-bottom: 2rem;
 }
 #answer, .digit,.operator,.utility,.dot{
+    box-shadow: 0px 2px 1px 2px rgba(0, 0 , 0, 0.23);
     border-radius: 24px;
     margin:5px 2.5px;
-    box-shadow: 0px 2px 1px 2px rgba(0, 0 , 0, 0.23);
 }
 #answer{
-        height: 110px;
-        background-color: var(--white-digit-color);
         z-index:9;
+        height: 110px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 1rem;
-        padding: 1rem 1.5rem;
         box-shadow: 0px -2px 1px 2px rgba(0, 0 , 0, 0.23);
+        background-color: var(--button-bg-color);
+        gap: 1rem;
+        padding: 1rem 1.5rem;  
         .typed-answer{
             font-size: 22px;
         }
@@ -56,35 +60,37 @@ body{
 
 .digit-row{
     .digit,.operator,.utility,.dot{
-        padding: 1.25rem 0;
-        text-align: center;
-        background-color: var(--white-digit-color);
-        border:none;
         min-width: 90px;
+        border:none;
+        background-color: var(--button-bg-color);
+        padding: 1.25rem 0;
         cursor: pointer;
     }
     .digit:hover,.dot:hover,.operator:hover,.utility:hover{
-        background-color:#f1f1f1;
+        background-color:var(--button-hover-darkwhite);
     }
     .digit:active,.dot:active,.operator:active,.utility:active{
         transform: scale(.975);
         box-shadow: 0px 1.4px .7px 1.4px rgba(0, 0 , 0, 0.08);
-        background-color:#e7e7e7;
+        background-color:var(--button-hover-darkwhite);
     }
 
 }
 .operator,.utility{
-    background-color: #e3e3e3 !important;
+    background-color: #c7c7c7 !important;
+    &:hover{
+        background-color: #b9b9b9 !important;
+    }
 }
+
 header.header{
     width: 100%;
-    text-align: center;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 1.75rem;
+    line-height: 1.2;
     margin: 1rem 0;
     padding: 0 1.75rem;
-    margin-bottom: 1rem;
-    font-family: 'Bungee Inline', cursive;
-    line-height: 1.2;
-    font-size: 1.75rem;
+    margin-bottom: 1rem;  
 }
 footer{
     position: absolute;
@@ -93,7 +99,6 @@ footer{
     font-size: 16px;
     padding: .25rem;
     width: 100%;
-    text-align: center;
 }
 @media (max-width: 600px){
     header.header{
@@ -101,7 +106,7 @@ footer{
         font-size: 1.25rem;
     }
     .container-calcu{
-       transform: scale(.72);
+        transform: scale(.72);
         margin: -3rem 0 0 0;
         margin-bottom: 0;
     }
