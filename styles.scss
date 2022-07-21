@@ -28,11 +28,13 @@ body{
 
 .container-calcu{
     max-height: 600px;
+    max-width: 420px;
     border-radius: 32px;
     box-shadow: 0px 4px 2px 2px rgba(0, 0 , 0, 0.4);
     background-color: var(--calcu-main-color);
     padding: 1.5rem 1rem;
     margin-bottom: 2rem;
+ 
 }
 #answer, .digit,.operator,.utility,.dot{
     box-shadow: 0px 2px 1px 2px rgba(0, 0 , 0, 0.23);
@@ -49,8 +51,10 @@ body{
         background-color: var(--button-bg-color);
         gap: 1rem;
         padding: 1rem 1.5rem;  
+        overflow: hidden;
         .typed-answer{
             font-size: 22px;
+            
         }
         .calculated-answer{
             font-size: 38px;
