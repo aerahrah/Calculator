@@ -3,7 +3,6 @@ let value = 0;
 let mode = "";
 let firstNum;
 let secondNum;
-let tempNum;
 
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
@@ -16,13 +15,8 @@ const dot = document.querySelector(".dot");
 const sqrt = document.querySelector(".squareroot");
 
 sqrt.addEventListener("click", () =>{
-
     if(firstNum!=undefined){
-        displayText =[];
-        displayType.textContent = firstNum;
-        firstNum = Math.sqrt(firstNum).toFixed(2);
-        displayText.push(firstNum);
-        answerDisplay.textContent = firstNum;
+        displaySqrt();
     }else{
         if(mode == ""){
             answerDisplay.textContent = Math.sqrt(displayText[0]).toFixed(2);
@@ -30,19 +24,10 @@ sqrt.addEventListener("click", () =>{
             let str = displayText.join("").split(mode);
             firstNum = str[0];
             secondNum = str[1];         
-            console.log("first Num:" +firstNum );
-            console.log("second Num:" +secondNum );
             if(secondNum!=undefined){
                 if(firstNum!=undefined){
-                    if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
-                    else if(mode == "÷") firstNum = Number(firstNum)/Number(secondNum);
-                    else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
-                    else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);  
-                    displayText =[];
-                    displayType.textContent = firstNum;
-                    firstNum = Math.sqrt(firstNum).toFixed(2);
-                    displayText.push(firstNum);
-                    answerDisplay.textContent = firstNum;
+                    modeOperator(mode);
+                    displaySqrt();
                 }
             }
             else{
@@ -52,6 +37,13 @@ sqrt.addEventListener("click", () =>{
     }
 
 });
+let displaySqrt = () =>{
+    displayText =[];
+    displayType.textContent = firstNum;
+    firstNum = Math.sqrt(firstNum).toFixed(2);
+    displayText.push(firstNum);
+    answerDisplay.textContent = firstNum;
+}
 del.addEventListener("click", () =>{
     displayText.pop();
     displayType.textContent = displayText.join("");
@@ -130,7 +122,6 @@ operators.forEach(element => {
 
 let operator = () =>{
     let str = displayText.join("").split(mode);
-    console.log(str);
     if(str.length <=1 && str.length >=0){
         if(firstNum == undefined) answerDisplay.textContent = displayType.textContent;
         else if(secondNum == ""||displayText == 0) answerDisplay.textContent = firstNum; 
@@ -139,12 +130,15 @@ let operator = () =>{
         secondNum = str[1];
         if(secondNum == "") answerDisplay.textContent = firstNum;
         else{
-            if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
-            else if(mode == "÷") firstNum = Number(firstNum)/Number(secondNum);
-            else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
-            else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);
+            modeOperator(mode);
             if(Number.isInteger(firstNum)) answerDisplay.textContent = firstNum;
             else answerDisplay.textContent = firstNum.toFixed(2);  
         }
     }
+};
+let modeOperator = (mode) =>{
+    if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
+    else if(mode == "÷") firstNum = Number(firstNum)/Number(secondNum);
+    else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
+    else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);  
 };
