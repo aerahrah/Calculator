@@ -15,6 +15,29 @@ const clear = document.querySelector(".reset");
 const dot = document.querySelector(".dot");
 const sqrt = document.querySelector(".squareroot");
 
+sqrt.addEventListener("click", () =>{
+    let str = displayText.join("").split(mode);
+    firstNum = str[0];
+    secondNum = str[1];
+    console.log("first Num:" +firstNum );
+    console.log("second Num:" +secondNum );
+    if(secondNum!=undefined){
+        if(firstNum!=undefined){
+            if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
+            else if(mode == "÷") firstNum = Number(firstNum)/Number(secondNum);
+            else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
+            else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);  
+            displayText =[];
+            displayType.textContent = firstNum;
+            firstNum = Math.sqrt(firstNum).toFixed(2);
+            displayText.push(firstNum);
+            answerDisplay.textContent = firstNum;
+        }
+    }
+    else{
+        answerDisplay.textContent = Math.sqrt(displayText[0]).toFixed(2);
+    }
+});
 del.addEventListener("click", () =>{
     displayText.pop();
     displayType.textContent = displayText.join("");
@@ -36,8 +59,6 @@ dot.addEventListener("click", ()=>{
         let str = displayText.join("").split(mode);
         firstNum = str[0];
         secondNum = str[1];
-        console.log(firstNum);
-        console.log(secondNum);
         if(firstNum.includes(".") && secondNum.includes(".")){
             return;
         }else{
@@ -102,8 +123,6 @@ let operator = () =>{
     }else{
         firstNum = str[0];
         secondNum = str[1];
-        console.log(firstNum);
-        console.log(secondNum);
         if(secondNum == "") answerDisplay.textContent = firstNum;
         else{
             if(mode == "x") firstNum = Number(firstNum)*Number(secondNum);
@@ -111,8 +130,9 @@ let operator = () =>{
             else if(mode == "+") firstNum = Number(firstNum)+Number(secondNum);
             else if(mode == "-") firstNum = Number(firstNum)-Number(secondNum);
             if(Number.isInteger(firstNum)) answerDisplay.textContent = firstNum;
-            else answerDisplay.textContent = firstNum.toFixed(2);
-            
+            else answerDisplay.textContent = firstNum.toFixed(2);  
+            console.log(displayText);
+            console.log(firstNum);
         }
     }
 };
